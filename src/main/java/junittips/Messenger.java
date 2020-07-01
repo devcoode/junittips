@@ -9,11 +9,11 @@ class Messenger {
         this.mailServer = mailServer;
     }
     void sendMail(String from, String to, String body) {
-        String content = String.join("\n", "From: " + from, "To: " + to, body);
+        String smtpMessage = String.join("\n", "From: " + from, "To: " + to, "", body);
         try {
-            mailServer.send(content);
+            mailServer.send(smtpMessage);
         } catch (IOException e) {
-            throw new UncheckedIOException("Error! body=" + body, e);
+            throw new UncheckedIOException("Error! smtpMessage=" + smtpMessage, e);
         }
     }
 }
